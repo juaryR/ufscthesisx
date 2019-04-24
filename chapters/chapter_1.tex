@@ -31,13 +31,9 @@
 
 % The \phantomsection command is needed to create a link to a place in the document that is not a
 % figure, equation, table, section, subsection, chapter, etc.
-%
-% When do I need to invoke \phantomsection?
 % https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
 \phantomsection
 
-
-% Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \chapter[\lang{Abbreviation for the Table of Contents}{Abreviação para o Sumário}]
 {
@@ -50,17 +46,17 @@
 
 
 \begin{flushright}
-    \englishword{ }
+    \englishword{\showfont}
 \end{flushright}
 
+% Why latex is letting my text goes out of the screen?
+% https://tex.stackexchange.com/questions/386762/why-latex-is-letting-my-text-goes-out-of-the-screen
+\sloppy
+\textbf{textbf: \englishword{\showfont}}
+\fussy
 
 % \newpage
-
-% Multiple-language document - babel - selectlanguage vs begin/end{otherlanguage}
-% https://tex.stackexchange.com/questions/36526/multiple-language-document-babel-selectlanguage-vs-begin-endotherlanguage
 \begin{otherlanguage*}{brazil}
-
-
 
 \section{Axiomas ou postulados}
 
@@ -82,7 +78,6 @@ Supondo $\mathfrak{L}$, uma linguagem de primeira ordem. para cada variável $x$
 
 \section{Teorema}
 
-
 Na matemática, um teorema é uma afirmação que pode ser provada como verdadeira através de outras afirmações já demonstradas, como outros teoremas, juntamente com afirmações anteriormente aceitas, como axiomas. Prova é o processo de mostrar que um teorema está correto. O termo teorema foi introduzido por Euclides, em Elementos, para significar "afirmação que pode ser provada". Em grego, originalmente significava "espetáculo" ou "festa". Atualmente, é mais comum deixar o termo "teorema" apenas para certas afirmações que podem ser provadas e de grande "importância matemática", o que torna a definição um tanto subjetiva.
 
 \begin{teorema}[Teorema de Pitágoras]
@@ -93,9 +88,9 @@ Na matemática, um teorema é uma afirmação que pode ser provada como verdadei
 \begin{proposicao}
 Em qualquer proposição a hipótese é considerada verdadeira.
 \end{proposicao}
+
+
 \subsection{Terminologia}
-
-
 
 Usualmente deixa-se o termo ``teorema'' apenas para as afirmações que podem ser provadas de grande importância. Assim, são dados outros nomes para os outros tipos dessas afirmações:
 
@@ -231,7 +226,6 @@ Segue um exemplo de rotação de páginas: \newpage
 
 Outra forma é utilizar o pacote pdflscape
 
-% Reducing font size in equation
 % https://tex.stackexchange.com/questions/60453/reducing-font-size-in-equation
 \tiny
 \begin{equation}
@@ -252,14 +246,11 @@ Outra forma é utilizar o pacote pdflscape
 \end{landscape}
 
 
-
-
 % ---
 \section{Codificação dos arquivos: UTF8}
 % ---
 
- 
-
+\englishword{\showfont}
 
 A codificação de todos os arquivos do \abnTeX{} é \texttt{UTF8}. É necessário que
 você utilize a mesma codificação nos documentos que escrever, inclusive nos
@@ -279,10 +270,10 @@ destacadas com recuo de 4 cm da margem esquerda, com letra menor que a do texto
 utilizado e sem as aspas. No caso de documentos datilografados, deve-se
 observar apenas o recuo \cite[5.3]{NBR10520:2002}.
 
- 
+\englishword{\showfont}
 \end{citacao}
 
- 
+\englishword{\showfont}
 Use o ambiente assim:
 
 \begin{lstlisting}[language=tex]
@@ -292,7 +283,7 @@ deve-se observar apenas o recuo \cite[5.3]{NBR10520:2002}.
 \end{citacao}
 \end{lstlisting}
 
- 
+
 
 O ambiente \texttt{citacao} pode receber como parâmetro opcional um nome de
 idioma previamente carregado nas opções da classe (\autoref{sec-hifenizacao}). Nesse
@@ -339,13 +330,15 @@ dividi-los no corpo do texto.}.
 \index{tabelas}A \autoref{tab-nivinv} é um exemplo de tabela construída em
 \LaTeX{}.
 
+% https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
+% https://tex.stackexchange.com/questions/484039/how-to-use-thead-with-left-align-locally-instead-of-globally/
 \begin{table}[htb]
 \caption[Níveis de investigação]{Níveis de investigação.}
 \label{tab-nivinv}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{p{2.6cm}p{6.0cm}p{2.25cm}p{3.40cm}}
   \toprule
-   \textbf{Nível de Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
+   {\raggedright \bfseries Nível de \\ Investigação} & \textbf{Insumos}  & \textbf{Sistemas de Investigação}  & \textbf{Produtos}  \\
     \midrule
     Meta-nível & Filosofia\index{filosofia} da Ciência  & Epistemologia &
     Paradigma  \\
@@ -373,7 +366,7 @@ acadêmicos.
   \begin{tabular}{ccc}
   \toprule
    \textbf{Nome} & \textbf{Nascimento} & \textbf{Documento} \\
-  \midrule 
+  \midrule
    Maria da Silva & 11/11/1111 & 111.111.111-11 \\
   \midrule
    João Souza & 11/11/2111 & 211.111.111-11 \\
@@ -424,8 +417,6 @@ acadêmicos.
 \end{table}
 
 
-
-
 \clearpage
 % ---
 \section{Figuras}
@@ -468,10 +459,6 @@ como o exemplo da \autoref{fig_circulo}.
     \end{center}
     \fonte{os autores}
 \end{figure}
-
-
-
-
 
 
 Ou então figuras podem ser incorporadas de arquivos externos, como é o caso da
@@ -607,10 +594,6 @@ matemática que não é numerada.
 
 Consulte mais informações sobre expressões matemáticas em
 \url{https://code.google.com/p/abntex2/wiki/Referencias}.
-
-
-
-
 
 
 % ---
@@ -808,7 +791,7 @@ Para incluir documentos sem quebra de páginas, utilize:
 \section{Compilar o documento \LaTeX{}}
 % ---
 
- 
+
 
 Geralmente os editores \LaTeX{}, como o
 TeXlipse\footnote{\url{http://texlipse.sourceforge.net/}}, o
@@ -877,7 +860,7 @@ Isto é uma subseção. Veja a \autoref{sec-divisoes-subsubsection}, que é uma
 \texttt{subsubsection  } do \LaTeX{}, mas é impressa chamada de ``subseção'' porque
 no Português não temos a palavra ``subsubseção''.
 
- 
+
 
 
 \subsubsection{Divisões do documento: subsubseção}
@@ -1072,11 +1055,7 @@ Sua contribuição é muito importante! Você pode ajudar na divulgação, no
 desenvolvimento e de várias outras formas. Veja como contribuir com o \abnTeX{}
 em \url{https://code.google.com/p/abntex2/wiki/ComoContribuir}.
 
-%
-% Invisible Overfull \hbox in toc
 % https://tex.stackexchange.com/questions/264586/invisible-overfull-hbox-in-toc
-%
-% Hyperref - Token not allowed
 % https://tex.stackexchange.com/questions/53513/hyperref-token-not-allowed
 \section{Quer customizar os modelos do \texorpdfstring{\newline}{}\abnTeX{} para sua instituição ou
 universidade?}
@@ -1085,7 +1064,5 @@ Veja como customizar o \abnTeX{} em:
 \url{https://code.google.com/p/abntex2/wiki/ComoCustomizar}.
 
 
-
 \end{otherlanguage*}
-
 

@@ -38,22 +38,14 @@
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
-
 % The \phantomsection command is needed to create a link to a place in the document that is not a
 % figure, equation, table, section, subsection, chapter, etc.
-%
-% When do I need to invoke \phantomsection?
 % https://tex.stackexchange.com/questions/44088/when-do-i-need-to-invoke-phantomsection
 \phantomsection
 
-
-% Is it possible to keep my translation together with original text?
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \chapter{\lang{Introduction}{Introdução}}
 \phantomsection
-
-
-
 
 A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra  informações do modelo de teses da Biblioteca Universitária da UFSC (BU-UFSC).
 
@@ -80,7 +72,7 @@ A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra  informações do modelo d
 \setlength\extrarowheight{2pt}
 \begin{tabularx}{\linewidth}{>{\RaggedRight}p{3cm}|>{\arraybackslash}X}
 
-\caption{Formatação do texto \protect }
+\caption{Formatação do texto \protect\englishword{\showfont}}
 \label{tab:a_table_formatacao_de_texto} \\
 \hline
 \endfirsthead
@@ -88,21 +80,20 @@ A Tabela~\ref{tab:a_table_formatacao_de_texto} mostra  informações do modelo d
 % How to set font size of footnotes correctly in memoir?
 % https://tex.stackexchange.com/questions/213927/how-to-set-font-size-of-footnotes-correctly-in-memoir
 \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\ufsccaptionsize\tablename~\thetable:
-Formatação do texto (continuação) \protect } \\
+Formatação do texto (continuação) \protect\englishword{\showfont}} \\
 \hline
 \endhead
 
 % Set multicolumn width to default table width
 % https://tex.stackexchange.com/questions/99326/set-multicolumn-width-to-default-table-width
 \hline
-\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize continua na próxima página\protect }
+\multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\footnotesize continua na próxima página\protect\englishword{\showfont}}
 \endfoot
 
 \hline
 \multicolumn{2}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\fonte{O autor} }
 \endlastfoot
-
-    Cor                          & Branco -                                                 \\ \hline
+    Cor                          & Branco - \englishword{\showfont}                                 \\ \hline
     Formato do papel             & A5                                                               \\ \hline
     Gramatura                    & 75                                                               \\ \hline
     Impressão                    & Frente e verso                                                   \\ \hline
@@ -125,8 +116,6 @@ Formatação do texto (continuação) \protect } \\
 \end{tabularx}
 
 
-
-
 \begin{figure}
     \centering
     \caption{Exemplo de figura}
@@ -135,8 +124,8 @@ Formatação do texto (continuação) \protect } \\
 \fonte{o autor}
 \end{figure}
 
-Por exemplo, na \figref{fig:ex01}, tem-se...
 
+Por exemplo, na \figref{fig:ex01}, tem-se...
 
 \begin{figure}
     \centering
