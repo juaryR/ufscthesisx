@@ -17,12 +17,15 @@
 % Allows you to write your thesis both in English and Portuguese
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
 \newif\ifenglish\englishfalse
+\newif\ifadvisor\advisorfalse
 
 % Uncomment the line `\englishtrue` to set the document default language to English
 % \englishtrue
+\advisortrue
 
 % https://tex.stackexchange.com/questions/131002/how-to-expand-ifthenelse-so-that-it-can-be-used-in-parshape
 \newcommand{\lang}[2]{\ifenglish#1\else#2\fi}
+\newcommand{\advisor}[2]{\ifadvisor#1\else#2\fi}
 
 % https://tex.stackexchange.com/questions/385895/how-to-make-passoptionstopackage-add-the-option-as-the-last
 \ifenglish
@@ -213,14 +216,16 @@ section=TITLE, % Título de seções em caixa alta
     \textual
 
     % Uncomment this to put a ←← | ← (Go To Top/Go Back) on each section header
-    % \addGoToSummary
+    \advisor{}{\addGoToSummary}
     \setlength\beforechapskip{50pt}
     \setlength\midchapskip{20pt}
     \setlength\afterchapskip{20pt}
 
     % PARTE
-    % \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
-    % \label{sec:primeira_parte}
+    \advisor{}{%
+        \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
+        \label{primeira_parte}
+    }
 
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
     \include{chapters/intro}
@@ -235,8 +240,10 @@ section=TITLE, % Título de seções em caixa alta
     \include{chapters/chapter_3}
 
     % PARTE
-    % \ifforcedinclude\else\part{\lang{Implementation}{Implementação}}\fi
-    % \label{sec:segunda_parte}
+    \advisor{}{%
+        \ifforcedinclude\else\part{\lang{Implementation}{Implementação}}\fi
+        \label{segunda_parte}
+    }
 
     % Segundo capitulo de Resultados
     \include{chapters/chapter_4}
