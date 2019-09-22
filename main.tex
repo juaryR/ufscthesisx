@@ -200,6 +200,28 @@ section=TITLE, % Título de seções em caixa alta
     }
 \fi
 
+
+% https://tex.stackexchange.com/questions/171999/overfull-hbox-in-biblatex
+% https://tex.stackexchange.com/questions/499457/why-my-document-is-not-hyphenation-on-words-starting-with-upper-case-letter-i
+\emergencystretch=5em
+
+% https://www.overleaf.com/learn/latex/Inserting_Images
+\graphicspath{{pictures/}}
+
+% https://tex.stackexchange.com/questions/23313/how-can-i-reduce-padding-after-figure
+% https://tex.stackexchange.com/questions/499580/how-to-keep-my-default-floating-environment-spacing-before-them-while-reducing
+% \xpretocmd{\figure}{\setlength{\belowcaptionskip}{-10pt}}{}{}
+
+% https://tex.stackexchange.com/questions/85113/xrightarrow-text
+\makeatletter
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+\newcommand{\xLeftarrow}[2][]{\ext@arrow 0359\Leftarrowfill@{#1}{#2}}
+\makeatother
+
+% https://tex.stackexchange.com/questions/32208/footnote-runs-onto-second-page
+\interfootnotelinepenalty=10000
+
+
 \begin{document}
 
     % FIXME: Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
