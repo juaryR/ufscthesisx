@@ -106,10 +106,10 @@ O jeito mais legal de compilar é executando um dos seguintes comandos:
 1. **`make latex biber latex1 biber latex2 halt=1 debug=1`**
 1. **`make latex biber latex1 biber latex2 latex3`**
 1. **`make latex biber latex1 biber latex2 latex3 halt=1 debug=1`**
-1. **`make latex biber latex1 biber latex2 latex3 latex4 halt=1 debug=1`**
 1. **`make latex biber latex1 biber latex2 latex3 latex4`**
-1. **`make latex biber latex1 biber latex2 latex3 latex4 biber latex5 halt=1 debug=1`**
+1. **`make latex biber latex1 biber latex2 latex3 latex4 halt=1 debug=1`**
 1. **`make latex biber latex1 biber latex2 latex3 latex4 biber latex5`**
+1. **`make latex biber latex1 biber latex2 latex3 latex4 biber latex5 halt=1 debug=1`**
 
 Se você quiser saber quais são todos os comandos de compilação disponíveis,
 basta chamar utilizar o comando `make help`. Exemplo:
