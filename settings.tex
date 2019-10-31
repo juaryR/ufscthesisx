@@ -24,6 +24,7 @@
 \@ifpackageloaded{babel}{\@ifpackagewith{babel}{brazil}{\addto\captionsbrazil{%
     \renewcommand{\mytextpreliminarylistname}{Breve Sumário}
 }}{}}{}
+\@ifundefined{advisor}{\newcommand{\advisor}[2]{#1}}{}
 \makeatother
 
 % Selects a sans serif font family
@@ -68,14 +69,6 @@
     % Apply the style `VZ14` just created
     % \chapterstyle{VZ14}
 
-    % Controlling the spacing between one paragraph and another, try also \onelineskip
-    % Default value for UFSC 0.0cm
-    \setlength{\parskip}{0.2cm}
-
-    % Paragraph size is given by
-    % Default value for UFSC 1.0cm
-    \setlength{\parindent}{1.3cm}
-
     % http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/memoir/memman.pdf
     \setlength\beforechapskip{0pt}
     \setlength\midchapskip{15pt}
@@ -87,6 +80,18 @@
     \checkandfixthelayout
 }{}
 \makeatother
+
+% Controlling the spacing between one paragraph and another, try also \onelineskip
+% Default value for UFSC 0.0cm
+\setlength{\parskip}{\advisor{0.0cm}{0.2cm}}
+
+% Paragraph size is given by
+% Default value for UFSC 1.0cm
+\setlength{\parindent}{1.3cm}
+
+% https://tex.stackexchange.com/questions/148647/how-to-remove-space-before-enumerate
+\advisor{}{\setlist[enumerate]{nosep}}
+
 
 % Color settings across the document
 \makeatletter
@@ -115,13 +120,14 @@
     {
         \hypersetup
         {
-            pdftitle={\imprimirtitulo},
             colorlinks=true,     % false: boxed links; true: colored links
             linkcolor=darkblue,  % color of internal links
             citecolor=darkblue, % color of links to bibliography
             filecolor=black,     % color of file links
             urlcolor=\advisor{black}{darkgreen},
-            bookmarksdepth=4
+            bookmarksdepth=4,
+            pdfencoding=auto,%
+            psdextra,
         }
     }
 }{}
@@ -252,8 +258,86 @@
 
 % http://www.tex.ac.uk/FAQ-tocloftwrong.html
 % Use \setlength\cftsectionnumwidth{4em} to override all these values at once
+\makeatletter
 \ifadvisor
 \else
+    \makechapterstyle{fixedabntex2indentation}
+    {%
+        \renewcommand{\chapterheadstart}{}
+
+        \ifx \chapternamenumlength \undefined
+            \newlength{\chapternamenumlength}
+        \fi
+
+        % tamanhos de fontes de chapter e part
+        \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+            \setlength\beforechapskip{\baselineskip}%
+            \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}%
+        }{%else
+           \setlength{\beforechapskip}{0pt}%
+           \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}%
+        }
+
+        \renewcommand{\chapnumfont}{\chaptitlefont}
+        \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+        \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+        \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
+
+        % tamanhos de fontes de section, subsection, subsubsection e subsubsubsection
+        \setsecheadstyle{\ABNTEXsectionfont\ABNTEXsectionfontsize\ABNTEXsectionupperifneeded}
+        \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\ABNTEXsubsectionupperifneeded}
+        \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\ABNTEXsubsubsectionupperifneeded}
+        \setsubsubsubsecheadstyle{\ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize\ABNTEXsubsubsubsectionupperifneeded}
+
+        % Impressão do número do capítulo
+        \renewcommand{\chapternamenum}{}
+
+        % Impressão do nome do capítulo
+        \renewcommand{\printchaptername}{%
+           \chaptitlefont%
+           \ifthenelse{\boolean{abntex@apendiceousecao}}{\appendixname}{}%
+        }
+
+        % Impressão do título do capítulo
+        \def\printchaptertitle##1{%
+            \chaptitlefont%
+            \ifthenelse{\boolean{abntex@innonumchapter}}{\centering\ABNTEXchapterupperifneeded{##1}}{%
+            \ifthenelse{\boolean{abntex@apendiceousecao}}{%
+                \centering%
+                \settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+                \ABNTEXchapterupperifneeded{##1}%
+            }{%
+                \settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
+                \parbox[t]{\columnwidth-\chapternamenumlength}{\ABNTEXchapterupperifneeded{##1}}}%
+            }%
+        }
+
+        % https://tex.stackexchange.com/questions/264668/memoir-indentation-of-unnumbered-sections-in-table-of-contents
+        \renewcommand{\tocinnonumchapter}{%
+          \addtocontents{toc}{\cftsetindents{chapter}{2.5em}{2em}}%
+          \cftinserthook{toc}{A}}
+
+        % Impressão do número do capítulo (no capítulo e não toc)
+        \renewcommand{\printchapternum}{%
+            \setboolean{abntex@innonumchapter}{false}%
+            \chapnumfont%
+            ~~\thechapter~%
+            \ifthenelse{\boolean{abntex@apendiceousecao}}{%
+                \tocinnonumchapter%
+                ~\ABNTEXcaptiondelim~~%
+            }{}%
+        }
+
+        \renewcommand{\ABNTEXcaptiondelim}{\textendash}
+        \renewcommand{\afterchapternum}{}
+
+        % Impressão do capítulo não numerado
+        \renewcommand\printchapternonum{%
+            \setboolean{abntex@innonumchapter}{true}%
+        }
+    }
+    \chapterstyle{fixedabntex2indentation}
+
     \cftsetindents{part}          {0em} {3em}
     \cftsetindents{chapter}       {0em} {3em}
     \cftsetindents{section}       {0em} {4.3em}
@@ -261,57 +345,5 @@
     \cftsetindents{subsubsection} {0em} {5.1em}
     \cftsetindents{paragraph}     {0em} {6.0em}
     \cftsetindents{subparagraph}  {0em} {7.0em}
-
-    \makechapterstyle{fixedabntex2indentation}{%
-      \renewcommand{\chapterheadstart}{}
-
-      \ifx \chapternamenumlength \undefined
-        \newlength{\chapternamenumlength}
-      \fi
-
-       % tamanhos de fontes de chapter e part
-       \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-         \setlength\beforechapskip{\baselineskip}
-         \renewcommand{\chaptitlefont}{\ABNTEXsectionfont\ABNTEXsectionfontsize}
-       }{%else
-         \setlength{\beforechapskip}{0pt}
-         \renewcommand{\chaptitlefont}{\ABNTEXchapterfont\ABNTEXchapterfontsize}
-       }
-
-      \renewcommand{\chapnumfont}{\chaptitlefont}
-      \renewcommand{\parttitlefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-      \renewcommand{\partnumfont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-      \renewcommand{\partnamefont}{\ABNTEXpartfont\ABNTEXpartfontsize}
-
-      % tamanhos de fontes de section, subsection, subsubsection e subsubsubsection
-      \setsecheadstyle{\ABNTEXsectionfont\ABNTEXsectionfontsize\ABNTEXsectionupperifneeded}
-      \setsubsecheadstyle{\ABNTEXsubsectionfont\ABNTEXsubsectionfontsize\ABNTEXsubsectionupperifneeded}
-      \setsubsubsecheadstyle{\ABNTEXsubsubsectionfont\ABNTEXsubsubsectionfontsize\ABNTEXsubsubsectionupperifneeded}
-      \setsubsubsubsecheadstyle{\ABNTEXsubsubsubsectionfont\ABNTEXsubsubsubsectionfontsize\ABNTEXsubsubsubsectionupperifneeded}
-
-      % impressao do numero do capitulo
-      \renewcommand{\chapternamenum}{}
-
-      % impressao do nome do capitulo
-      \renewcommand{\printchaptername}{%
-       \chaptitlefont
-       \ifthenelse{\boolean{abntex@apendiceousecao}}{\appendixname}{}%
-      }
-
-      % impressao do titulo do capitulo
-      \def\printchaptertitle##1{%
-        \chaptitlefont%
-        \ifthenelse{\boolean{abntex@innonumchapter}}{\centering\ABNTEXchapterupperifneeded{##1}}{%
-        \ifthenelse{\boolean{abntex@apendiceousecao}}{%
-            \centering%
-            \settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
-            \ABNTEXchapterupperifneeded{##1}%
-          }{%
-            \settowidth{\chapternamenumlength}{\printchaptername\printchapternum\afterchapternum}%
-            \parbox[t]{\columnwidth-\chapternamenumlength}{\ABNTEXchapterupperifneeded{##1}}}%
-         }
-      }
-    }
-
-    \chapterstyle{fixedabntex2indentation}
 \fi
+\makeatother

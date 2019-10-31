@@ -1,18 +1,27 @@
+%https://github.com/SublimeText/LaTeXTools/issues/1439
+%!TEX output_directory=setup/cache
+
+% You can build this using the command:
+% latexmk -pdf -jobname=output -output-directory=cache -aux-directory=cache -pdflatex="pdflatex -interaction=nonstopmode" -use-make main.tex
+
+% When the bibliography includes a cyclic reference to another bibliography,
+% you need to run `pdflatex` 5 times on the following order:
+% 1. `pdflatex`,
+% 2. `biber`,
+% 3. `pdflatex`
+% 4. `pdflatex`
+% 5. `pdflatex`
+% 6. `biber`
+% 7. `pdflatex`
+
 % Monograph LaTeX Template for UFSC based on:
-%
 % 1. https://github.com/royertiago/tcc
 % 2. http://portal.bu.ufsc.br/normalizacao/
-% 3. https://github.com/AdrianoRuseler/abntex2-ufsc
-%
-% When the bibliography includes a cyclic reference to another bibliography,
-% you need to run `pdfTeX` 5 times on the following order:
-% 1. `pdfTeX`,
-% 2. `biber`,
-% 3. `pdfTeX`
-% 4. `pdfTeX`
-% 5. `pdfTeX`
-% 6. `biber`
-% 7. `pdfTeX`
+% 3. https://github.com/evandrocoan/ufscthesisx
+% 4. http://www.latextemplates.com/template/simple-sectioned-essay
+
+% Initially translated from Portuguese with help of https://github.com/omegat-org/omegat <Computer Assisted Translation of LaTeX document>
+% https://tex.stackexchange.com/questions/313732/computer-assisted-translation-of-latex-document
 
 % Allows you to write your thesis both in English and Portuguese
 % https://tex.stackexchange.com/questions/5076/is-it-possible-to-keep-my-translation-together-with-original-text
@@ -35,8 +44,9 @@
 \fi
 
 % Simple alias for English and Portuguese words
-\newcommand{\brazilword}[1]{\foreignlanguage{brazil}{#1}}
-\newcommand{\englishword}[1]{\foreignlanguage{english}{#1}}
+% https://tex.stackexchange.com/questions/513019/argument-of-bbltempd-has-an-extra
+\newcommand{\brazilword}[1]{\protect\foreignlanguage{brazil}{#1}}
+\newcommand{\englishword}[1]{\protect\foreignlanguage{english}{#1}}
 
 % Allow you to write `Evandro's house` in latex as `Evandro\s house` instead of `Evandro\textquotesingle{}s house`
 % https://tex.stackexchange.com/questions/31091/space-after-latex-commands
@@ -51,9 +61,11 @@
 
 % The UFSC font size is 10.5, but memoir embedded by `abntex2` only accepts 10 and 11pt.
 % However, problem will be fixed the `ufscthesisx` package.
+% http://tug.ctan.org/tex-archive/macros/latex/contrib/cleveref/cleveref.pdf
 \documentclass[
-10pt,          % Padrão UFSC para versão final
+\lang{english}{brazilian,brazil},
 % 12pt,        % Pode usar tamanho 12pt para defesa
+10pt,          % Padrão UFSC para versão final
 a4paper,       % Padrão UFSC para versão final
 twoside,       % Impressão nos dois lados da folha
 chapter=TITLE, % Título de capítulos em caixa alta
@@ -80,46 +92,43 @@ section=TITLE, % Título de seções em caixa alta
 \coordenador[\lang{Coordinator}{Coordenador(a)}]{\brazilword{Nome do Coordenador(a)}, \lang{Phd.}{Dr.}}
 
 % FIXME: Local da sua defesa
-\local{\brazilword{Local da sua Defesa}}
+\local{\brazilword{Florianópolis, Santa Catarina} -- \lang{Brazil}{Brasil}}
 
 % FIXME: Ano da sua defesa
-\ano{2001}
+\ano{2019}
 \biblioteca{\lang{University Library}{Biblioteca Universitária}}
 
 % FIXME: Sigla da sua instituição
 \instituicaosigla{UFSC}
-\instituicao{\lang{Federal University of}{Universidade Federal de} \brazilword{Santa Catarina}}
+\instituicao{\brazilword{Universidade Federal de Santa Catarina}}
 
 % FIXME: Preencha com Tese, Dissertação, Monografia ou Trabalho de Conclusão de Curso, Bachelor's Thesis, etc
-\tipotrabalho{\lang{Monograph}{Monografia}}
+\tipotrabalho{\lang{Bachelor\s Thesis}{Trabalho de Conclusão de Curso}}
 
 % FIXME: Se houver Área de Concentração, descomente a linha abaixo
-% \area{\lang{Concentration Area}{Área de Concentração}}
+% \area{\lang{Formal Languages}{Linguagens Formais}}
 
 % FIXME: Preencha com Doutor, Bacharel ou Mestrando
 \formacao{\lang
-    {Doctorate in XXXXXX}
-    {Doutor em XXXXXX}%
+    {Bachelor of Science degree in Computer Science}
+    {Bacharel em Ciências da Computação}%
 }
 \programa{\lang
-    {Postgraduate Program in XXXXXX}
-    {Programa de Pós-Graduação em XXXXXX}%
+    {Undergraduate Program in Computer Science}
+    {Programa de Graduação em Ciências da Computação}%
 }
 
 % FIXME: Preencha com Departamento de XXXXXX, Centro de XXXXXX
 \centro{\lang
-    {Department of XXXXXX, Center of XXXXXX}
-    {Departamento de XXXXXX, Centro de XXXXXX}%
+    {INE -- Department of Informatics and Statistics, CTC -- Technological Center}
+    {INE -- Departamento de Informática e Estatística, CTC -- Centro Tecnológico}%
 }
 
-% FIXME: Preencha com Campus de XXXXXX   ou   Centro de XXXXXX
-\campus{\lang
-    {Campus/Center of XXXXXX}
-    {Campus/Centro de XXXXXX}%
-}
+% FIXME: Preencha com Campus XXXXXX     ou     Centro de XXXXXX
+\campus{\brazilword{Campus Reitor João David Ferreira Lima}}
 
 % FIXME: Data da sua defesa
-\data{\lang{30 of march of}{30 de março de} 2001}
+\data{\lang{30 of march of}{30 de março de} 2019}
 
 % O preambulo deve conter tipo do trabalho, objetivo, nome da instituição e a área de concentração.
 \preambulo{\lang%
@@ -132,6 +141,10 @@ section=TITLE, % Título de seções em caixa alta
     }%
 }
 
+% Allows you to use ~= instead of `\hyp{}`
+% https://tex.stackexchange.com/questions/488008/how-to-create-an-alternative-to-shortcut-or-hyp
+\useshorthands{~}\defineshorthand{~=}{\hyp{}}
+
 \palavraschaveufsc{palavraschaveingles}   {Keyword 1}
 \palavraschaveufsc{palavraschaveportugues}{Palavra Chave 1}
 
@@ -141,12 +154,18 @@ section=TITLE, % Título de seções em caixa alta
 \palavraschaveufsc{palavraschaveingles}   {Keyword 3}
 \palavraschaveufsc{palavraschaveportugues}{Palavra Chave 3}
 
+
+\hypersetup
+{
+    pdfsubject={Thesis' Abstract},
+    pdfcreator={LaTeX with abnTeX2 for UFSC},
+    pdftitle={\imprimirtitulo},
+    pdfauthor={\imprimirautor},%
+    pdfkeywords={\lang{\palavraschaveingles}{\palavraschaveportugues}},%
+}
+
 % Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
 \input{settings.tex}
-
-% Allows you to use ~= instead of `\hyp{}`
-% https://tex.stackexchange.com/questions/488008/how-to-create-an-alternative-to-shortcut-or-hyp
-% \useshorthands{~}\defineshorthand{~=}{\hyp{}}
 
 % When writing a large document, it is sometimes useful to work on selected sections of the document
 % to speed up compilation time: https://en.wikibooks.org/wiki/TeX/includeonly
@@ -160,16 +179,15 @@ section=TITLE, % Título de seções em caixa alta
 % \addtoincludeonly{beforetext/siglas}
 % \addtoincludeonly{beforetext/simbolos}
 
-% \addtoincludeonly{chapters/intro}
-% \addtoincludeonly{chapters/chapter_1}
-% \addtoincludeonly{chapters/chapter_2}
-% \addtoincludeonly{chapters/chapter_3}
-% \addtoincludeonly{chapters/chapter_4}
-% \addtoincludeonly{chapters/conclusion}
+% Part 1
+% \addtoincludeonly{chapters/introduction}
+% \addtoincludeonly{chapters/motivation}
+% \addtoincludeonly{chapters/beautifiers}
 
-% \addtoincludeonly{aftertext/anexo_a}
-% \addtoincludeonly{aftertext/anexo_b}
-% \addtoincludeonly{aftertext/apendice_a}
+% Part 2
+\addtoincludeonly{chapters/object_beautifier}
+% \addtoincludeonly{chapters/conclusion}
+% \addtoincludeonly{aftertext/aftertext}
 
 % Control whether the full document will be generated
 % Note: It will also generate severals errors like the following, which can be ignored
@@ -181,25 +199,6 @@ section=TITLE, % Título de seções em caixa alta
 % Uncomment these two lines, to only partially generate the document
 % \doincludeonly
 % \forcedincludetrue
-
-
-\ifenglish
-    \hypersetup
-    {
-        pdfauthor={Author},
-        pdfsubject={Thesis' Abstract},
-        pdfcreator={LaTeX with abnTeX2 for UFSC},
-        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{thesis},
-    }
-\else
-    \hypersetup
-    {
-        pdfauthor={Autores},
-        pdfsubject={Resumo da tese},
-        pdfcreator={LaTeX com abnTeX2 para UFSC},
-        pdfkeywords={abnt}{latex}{UFSC}{abntex2}{tese},
-    }
-\fi
 
 
 % https://tex.stackexchange.com/questions/171999/overfull-hbox-in-biblatex
@@ -222,9 +221,11 @@ section=TITLE, % Título de seções em caixa alta
 % https://tex.stackexchange.com/questions/32208/footnote-runs-onto-second-page
 \interfootnotelinepenalty=10000
 
+% Disable \openright default behavior
+\ifforcedinclude\openany\else\fi
+
 
 \begin{document}
-
     % FIXME: Comment this after finishing the thesis, so you can start fixing the \flushbottom vs \raggedbottom
     % https://tex.stackexchange.com/questions/65355/flushbottom-vs-raggedbottom
     \raggedbottom
@@ -232,23 +233,21 @@ section=TITLE, % Título de seções em caixa alta
     % https://tex.stackexchange.com/questions/4705/double-space-between-sentences
     \frenchspacing
 
+    % Uncomment this to put a ←← | ← (Go To Top/Go Back) on each section header
+    \advisor{}{\addGoToSummary}
+
     % ELEMENTOS PRÉ-TEXTUAIS
     \input{beforetext/beforetext.tex}
 
     % ELEMENTOS TEXTUAIS
     \textual
-
-    % Uncomment this to put a ←← | ← (Go To Top/Go Back) on each section header
-    \advisor{}{\addGoToSummary}
     \setlength\beforechapskip{50pt}
     \setlength\midchapskip{20pt}
     \setlength\afterchapskip{20pt}
 
     % PARTE
-    \advisor{}{%
-        \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
-        \label{primeira_parte}
-    }
+    \ifforcedinclude\else\part{\lang{Research}{Pesquisa}}\fi
+    \label{primeira_parte}
 
     % Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
     \include{chapters/intro}
@@ -263,10 +262,8 @@ section=TITLE, % Título de seções em caixa alta
     \include{chapters/chapter_3}
 
     % PARTE
-    \advisor{}{%
-        \ifforcedinclude\else\part{\lang{Implementation}{Implementação}}\fi
-        \label{segunda_parte}
-    }
+    \ifforcedinclude\else\part{\lang{Implementation}{Implementação}}\fi
+    \label{segunda_parte}
 
     % Segundo capitulo de Resultados
     \include{chapters/chapter_4}
