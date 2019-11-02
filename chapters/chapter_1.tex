@@ -132,7 +132,7 @@ Um par de primos é chamado de primos gêmeos se eles são dois números primos 
 
 \subsection{Lema}
 
-    Na Matemática, um lema é um teorema que é usado como um passo intermediário para atingir um resultado maior, provado em outro teorema. Normalmente o lema tem pouca serventia além de servir ao propósito do teorema que o utiliza, mas isto não é uma regra, e a classificação entre lemas e teoremas é arbitrária\footnote{Wikipédia}.
+    Na Matemática, um lema é um teorema que é usado como um passo intermediário para atingir um resultado maior, provado em outro teorema. Normalmente o lema tem pouca serventia além de servir ao propósito do teorema que o utiliza, mas isto não é uma regra, e a classificação entre lemas e teoremas é arbitrária\footnote{Wikipédia -- \showfont}.
 
 
 \begin{lema}
@@ -316,11 +316,11 @@ separadas do texto por um espaço simples de entre as linhas e por filete de 5
 cm, a partir da margem esquerda. Devem ser alinhadas, a partir da segunda linha
 da mesma nota, abaixo da primeira letra da primeira palavra, de forma a destacar
 o expoente, sem espaço entre elas e com fonte menor
-\textcite[5.2.1]{NBR14724:2011}.}\footnote{Caso uma série de notas sejam
+\textcite[5.2.1]{NBR14724:2011}. -- \showfont}\footnote{Caso uma série de notas sejam
 criadas sequencialmente, o \abnTeX{} instrui o \LaTeX{} para que uma vírgula seja
 colocada após cada número do expoente que indica a nota de rodapé no corpo do
-texto.}\footnote{Verifique se os números do expoente possuem uma vírgula para
-dividi-los no corpo do texto.}.
+texto. -- \showfont}\footnote{Verifique se os números do expoente possuem uma vírgula para
+dividi-los no corpo do texto. -- \showfont}.
 
 
 % ---
@@ -333,7 +333,7 @@ dividi-los no corpo do texto.}.
 % https://tex.stackexchange.com/questions/2441/how-to-add-a-forced-line-break-inside-a-table-cell
 % https://tex.stackexchange.com/questions/484039/how-to-use-thead-with-left-align-locally-instead-of-globally/
 \begin{table}[htb]
-\caption[Níveis de investigação]{Níveis de investigação.}
+\caption[Níveis de investigação -- \showfont]{Níveis de investigação. -- \showfont}
 \label{tab-nivinv}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{p{2.6cm}p{6.0cm}p{2.25cm}p{3.40cm}}
@@ -348,7 +348,7 @@ dividi-los no corpo do texto.}.
    \bottomrule
 \end{tabular}
 }
-\fonte{\textcite{van86}}
+\fonte{\textcite{van86} -- \showfont}
 \end{table}
 
 
@@ -360,7 +360,7 @@ acadêmicos.
 \begin{table}[htb]
 \IBGEtab{%
   \caption{Um Exemplo de tabela alinhada que pode ser longa
-  ou curta, conforme padrão IBGE.}%
+  ou curta, conforme padrão IBGE. -- \showfont}%
   \label{tabela-ibge}
 }{%
   \begin{tabular}{ccc}
@@ -375,11 +375,11 @@ acadêmicos.
   \bottomrule
 \end{tabular}%
 }{%
-  \fonte{Produzido pelos autores.}%
+  \fonte{Produzido pelos autores. -- \showfont}%
   \nota{Esta é uma nota, que diz que os dados são baseados na
-  regressão linear.}%
+  regressão linear. -- \showfont}%
   \nota[Anotações]{Uma anotação adicional, que pode ser seguida de várias
-  outras.}%
+  outras. -- \showfont}%
   }
 \end{table}
 
@@ -388,7 +388,7 @@ acadêmicos.
 % What does [t] and [ht] mean?
 % https://tex.stackexchange.com/questions/8652/what-does-t-and-ht-mean
 \begin{table}[!ht]
-    \caption{Exemplo de tabela utilizando o pacote \emph{siunitx} e \emph{resizebox}.}
+    \caption{Exemplo de tabela utilizando o pacote \emph{siunitx} e \emph{resizebox}  -- \showfont.}
     \label{tab:SimulationResults}
     \centering
     \resizebox{\linewidth}{!}{%
@@ -413,7 +413,7 @@ acadêmicos.
             $I_{Ca3}$&$\SI{1.2598194e+000}{\A}$&  $I_{Cb3}$&$\SI{1.4708279e+000}{\A}$& $I_{Cc3}$&$\SI{1.3017673e+000}{\A}$ \\
             \bottomrule
         \end{tabular}}
-\fonte{O autor}
+\fonte{O autor -- \showfont}
 \end{table}
 
 
@@ -426,7 +426,7 @@ acadêmicos.
 como o exemplo da \autoref{fig_circulo}.
 
 \begin{figure}[htb]
-    \caption{\label{fig_circulo}A delimitação do espaço}
+    \caption{\label{fig_circulo}A delimitação do espaço -- \showfont}
     \begin{center}
         \setlength{\unitlength}{5cm}
         \begin{picture}(1,1)
@@ -457,7 +457,7 @@ como o exemplo da \autoref{fig_circulo}.
         \put(0,0){\line(6,5){1}}
         \end{picture}
     \end{center}
-    \fonte{os autores}
+    \fonte{os autores -- \showfont}
 \end{figure}
 
 
@@ -482,11 +482,11 @@ incorporadas com o software livre \textsf{Gimp}\index{Gimp}
 Photoshop\index{Adobe Photoshop}.
 
 \begin{figure}[htb]
-    \caption{\label{fig_grafico}Gráfico produzido em Excel e salvo como PDF}
+    \caption{\label{fig_grafico}Gráfico produzido em Excel e salvo como PDF -- \showfont}
     \begin{center}
         \includegraphics[scale=0.35]{pictures/abntex2-modelo-img-grafico.pdf}
     \end{center}
-    \fonte{\textcite[p. 24]{araujo2012}}
+    \fonte{\textcite[p. 24]{araujo2012} -- \showfont}
 \end{figure}
 
 % ---
@@ -502,16 +502,16 @@ com tamanhos e posições controladas. Veja o exemplo da
 \centering
  \begin{minipage}{0.49\textwidth}
    \centering
-   \caption{Imagem 1 da minipage} \label{fig_minipage_imagem1}
+   \caption{Imagem 1 da minipage -- \showfont} \label{fig_minipage_imagem1}
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-marca.pdf}
-   \fonte{Produzido pelos autores}
+   \fonte{Produzido pelos autores -- \showfont}
  \end{minipage}
  \hfill
  \begin{minipage}{0.49\textwidth}
    \centering
-   \caption{Gráfico 2 da minipage} \label{fig_minipage_grafico2}
+   \caption{Gráfico 2 da minipage -- \showfont} \label{fig_minipage_grafico2}
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-grafico.pdf}
-   \fonte{\textcite[p. 24]{araujo2012}}
+   \fonte{\textcite[p. 24]{araujo2012} -- \showfont}
  \end{minipage}
 \end{figure}
 
@@ -540,14 +540,14 @@ refere. \cite[seções 5.8]{NBR14724:2011}
 Depois de definir o ambiente \texttt{quadro} podemos ter um quadro:
 
 \begin{quadro}
-\caption{\label{quad:quadro_modelo1}Legenda do primeiro quadro.}
+\caption{\label{quad:quadro_modelo1}Legenda do primeiro quadro. -- \showfont}
 \centering
 \begin{tabular}{|c|}
 \hline
 Este é o conteúdo do primeiro quadro.\\
 \hline
 \end{tabular}
-\fonte{Teste.}
+\fonte{Teste. -- \showfont}
 \end{quadro}
 
 
@@ -555,13 +555,13 @@ Além do \autoref{quad:quadro_modelo1}, também é possível especificar outra o
 
 \begin{quadro}[htb]
 \centering
-\caption{\label{quad:quadro_modelo2}Legenda do segundo quadro.}
+\caption{\label{quad:quadro_modelo2}Legenda do segundo quadro. -- \showfont}
 \begin{tabular}{|c|}
 \hline
 Este é o conteúdo do segundo quadro.\\
 \hline
 \end{tabular}
-\fonte{O autor.}
+\fonte{O autor. -- \showfont}
 \end{quadro}
 
 
@@ -711,10 +711,10 @@ Para isso, também estão disponíveis os ambientes:
 Para mais informações, consulte \textcite[p. 47-52 e 135]{memoir}.
 
 % ---
-\section{Inclusão de código fonte}\label{sec-codeinsert}
+\section{Inclusão de código fonte -- \showfont}\label{sec-codeinsert}
 % ---
 
-\begin{lstlisting}[caption={Leitura dos dados simulados e conversão para estados topológicos.},label={lst:leituradadossim}]
+\begin{lstlisting}[caption={Leitura dos dados simulados e conversão para estados topológicos. -- \showfont},label={lst:leituradadossim}]
 % Pré definições iniciais
 nsub=3;  % Numero de Submódulos
 nbits=2*nsub; % Numero de bits necessários para representar os estados
@@ -732,7 +732,7 @@ state=fi(bin2dec(binstates),0,nbits,0); % Objeto numérico de ponto-fixo
 
 
 
-\begin{lstlisting}[language=Python, caption=Python example]
+\begin{lstlisting}[language=Python, caption=Python example -- \showfont]
 import numpy as np
 
 def incmatrix(genl1,genl2):
@@ -794,8 +794,8 @@ Para incluir documentos sem quebra de páginas, utilize:
 
 
 Geralmente os editores \LaTeX{}, como o
-TeXlipse\footnote{\url{http://texlipse.sourceforge.net/}}, o
-Texmaker\footnote{\url{http://www.xm1math.net/texmaker/}}, entre outros,
+TeXlipse\footnote{\url{http://texlipse.sourceforge.net/} -- \showfont}, o
+Texmaker\footnote{\url{http://www.xm1math.net/texmaker/} -- \showfont}, entre outros,
 compilam os documentos automaticamente, de modo que você não precisa se
 preocupar com isso.
 
@@ -804,7 +804,7 @@ comandos, que devem ser digitados no \emph{Prompt de Comandos} do Windows ou no
 \emph{Terminal} do Mac ou do Linux:
 
 \begin{lstlisting}[language=bash,caption={Você pode compilar os documentos \LaTeX{} usando os seguintes
-comandos.},label={lst:compilarLatex}]
+comandos. -- \showfont},label={lst:compilarLatex}]
    pdflatex ARQUIVO_PRINCIPAL.tex
    bibtex ARQUIVO_PRINCIPAL.aux
    makeindex ARQUIVO_PRINCIPAL.idx
@@ -829,20 +829,20 @@ exemplo de remissão interna, que também pode ser feita quando indicamos o
 do capítulo indicado é \ref{cap_exemplos}, que se inicia à
 \autopageref{cap_exemplos}\footnote{O número da página de uma remissão pode ser
 obtida também assim:
-\pageref{cap_exemplos}.}.
+\pageref{cap_exemplos}. -- \showfont}.
 Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas entre
 seções, subseções e subsubseções.
 
 O código usado para produzir o texto desta seção é:
 
-\begin{lstlisting}[language=TeX, caption=TeX example]
+\begin{lstlisting}[language=TeX, caption=TeX example -- \showfont]
 Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos um
 exemplo de remissão interna, que também pode ser feita quando indicamos o
 \autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}. O número
 do capítulo indicado é \ref{cap_exemplos}, que se inicia à
 \autopageref{cap_exemplos}\footnote{O número da página de uma remissão pode ser
 obtida também assim:
-\pageref{cap_exemplos}.}.
+\pageref{cap_exemplos}. -- \showfont}.
 Veja a \autoref{sec-divisoes} para outros exemplos de remissões internas entre
 seções, subseções e subsubseções.
 \end{lstlisting}
@@ -935,7 +935,7 @@ A lista completa de idiomas suportados, bem como outras opções de hifenizaçã
 estão disponíveis em \textcite[p.~5-6]{babel}.
 
 Exemplo de hifenização em inglês\footnote{Extraído de:
-\url{http://en.wikibooks.org/wiki/LaTeX/Internationalization}}:
+\url{http://en.wikibooks.org/wiki/LaTeX/Internationalization} -- \showfont}:
 
 \begin{otherlanguage*}{english}
 \textit{Text in English language. This environment switches all language\hyp{}definitions,
@@ -949,7 +949,7 @@ also be used to disallow hyphenation by using the language name
 \end{otherlanguage*}
 
 Exemplo de hifenização em francês\footnote{Extraído de:
-\url{http://bigbrowser.blog.lemonde.fr/2013/02/17/tu-ne-tweeteras-point-le-vatican-interdit-aux-cardinaux-de-tweeter-pendant-le-conclave/}}:
+\url{http://bigbrowser.blog.lemonde.fr/2013/02/17/tu-ne-tweeteras-point-le-vatican-interdit-aux-cardinaux-de-tweeter-pendant-le-conclave/} -- \showfont}:
 
 \begin{otherlanguage*}{french}
 \textit{Texte en français. Pas question que Twitter ne vienne faire une
@@ -963,7 +963,7 @@ connecter à leur compte.}
 \end{otherlanguage*}
 
 Pequeno texto em espanhol\footnote{Extraído de:
-\url{http://internacional.elpais.com/internacional/2013/02/17/actualidad/1361102009_913423.html}}:
+\url{http://internacional.elpais.com/internacional/2013/02/17/actualidad/1361102009_913423.html} -- \showfont}:
 
 \foreignlanguage{spanish}{\textit{Decenas de miles de personas ovacionan al pontífice en su
 penúltimo ángelus dominical, el primero desde que anunciase su renuncia. El Papa se
@@ -1018,7 +1018,7 @@ que devem estar envoltos em chaves. A regra geral é sempre usar a acentuação
 neste modo quando houver conversão para letras maiúsculas.
 
 \begin{table}[htbp]
-\caption{Tabela de conversão de acentuação.}
+\caption{Tabela de conversão de acentuação. -- \showfont}
 \label{tabela-acentos}
 \centering
 \begin{tabular}{ll}\hline\hline
@@ -1028,7 +1028,7 @@ acento & \textsf{bibtex}\\
 ç & \verb+{\c c}+\\
 \hline\hline
 \end{tabular}
-\fonte{Manual do LaTeX \cite{memoir}}
+\fonte{Manual do LaTeX \cite{memoir} -- \showfont}
 \end{table}
 
 
