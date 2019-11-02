@@ -126,7 +126,7 @@ $ make help
    make latex debug=1
    make thesis debug=1
 
- If you are using Windows Command Prompt `cmd.exe`, you must use this
+ If you are using Windows Command Prompt `cmd.exe`, you must use the
  command like this:
   make help
   set "debug=1" && make
@@ -136,10 +136,23 @@ $ make help
  Use halt=1 to stop running on errors instead of continuing the compilation!
  Also, use debug=1 to halt on errors and fix the errors dynamically.
 
- Examples:
+ Examples (Linux):
    make halt=1
    make latex halt=1
    make thesis halt=1
+
+   make debug=1 halt=1
+   make latex debug=1 halt=1
+   make thesis debug=1 halt=1
+
+ Examples (Windows):
+   set "halt=1" && make halt=1
+   set "halt=1" && make latex halt=1
+   set "halt=1" && make thesis halt=1
+
+   set "debug=1" && "halt=1" && make halt=1
+   set "debug=1" && "halt=1" && make latex halt=1
+   set "debug=1" && "halt=1" && make thesis halt=1
 
  Targets:
    all        Call the `thesis` make rule
@@ -175,7 +188,7 @@ $ make help
        5. dir            - the directory to put the files, defaults to '~/LatexBuild'
 
      Example usage for Linux:
-       make remote LATEXPASSWORD=123 LATEXADDRESS=linux@192.168.0.222 rules=latex
+       make remote LATEXPASSWORD=123 LATEXADDRESS=linux@192.168.0.222 rules=latex &&
                 delete=1 dir=~/Downloads/Thesis
 
      Example usage for Windows:
