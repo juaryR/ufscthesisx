@@ -210,7 +210,7 @@ Segue um exemplo de rotação de páginas -- \showfont: \newpage
 
 \begin{sideways}%
     \parbox{1\textheight}{%
-        \begin{tiny} -- \showfont
+        \begin{tiny}
 \begin{equation}
 \left[ {{L_{sr}}} \right] = \left[ {\begin{array}{*{20}{c}}
     {\cos \left( \theta  \right)}&{\cos \left( {\theta  - 8\alpha } \right)}&{\cos \left( {\theta  - 7\alpha } \right)}&{\cos \left( {\theta  - 6\alpha } \right)}&{\cos \left( {\theta  - 5\alpha } \right)}&{\cos \left( {\theta  - 4\alpha } \right)}&{\cos \left( {\theta  - 3\alpha } \right)}&{\cos \left( {\theta  - 2\alpha } \right)}&{\cos \left( {\theta  - \alpha } \right)}\\
@@ -507,17 +507,17 @@ com tamanhos e posições controladas. Veja o exemplo da
 \label{teste}
 \centering
  \begin{minipage}{0.49\textwidth}
-   \centering
    \caption[Imagem 1 da minipage]{Imagem 1 da minipage -- \showfont}
    \label{fig_minipage_imagem1}
+   \centering
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-marca.pdf}
    \fonte{Produzido pelos autores -- \showfont}
  \end{minipage}
  \hfill
  \begin{minipage}{0.49\textwidth}
-   \centering
    \caption[Gráfico 2 da minipage]{Gráfico 2 da minipage -- \showfont}
    \label{fig_minipage_grafico2}
+   \centering
    \includegraphics[width=\textwidth]{pictures/abntex2-modelo-img-grafico.pdf}
    \fonte{\textcite[p. 24]{araujo2012} -- \showfont}
  \end{minipage}
@@ -563,9 +563,9 @@ Este é o conteúdo do primeiro quadro.\\
 Além do \autoref{quad:quadro_modelo1}, também é possível especificar outra ordem de posicionamento como [htb] -- \showfont:
 
 \begin{quadro}[htb]
-\centering
 \caption[Legenda do segundo quadro.]{Legenda do segundo quadro. -- \showfont}
 \label{quad:quadro_modelo2}
+\centering
 \begin{tabular}{|c|}
 \hline
 Este é o conteúdo do segundo quadro.\\
@@ -724,8 +724,8 @@ Para mais informações, consulte \textcite[p. 47-52 e 135]{memoir} -- \showfont
 \section{Inclusão de código fonte}\label{sec-codeinsert}
 % ---
 
-\begin{lstlisting}[caption={[Leitura dos dados simulados e conversão para estados topológicos.]Leitura
-    dos dados simulados e conversão para estados topológicos. -- \showfont},label={lst:leituradadossim}]
+\begin{lstlisting}[caption={[Leitura dos dados simulados e conversão para estados topológicos.]{Leitura
+    dos dados simulados e conversão para estados topológicos. -- \showfont}},label={lst:leituradadossim}]
 % Pré definições iniciais
 nsub=3;  % Numero de Submódulos
 nbits=2*nsub; % Numero de bits necessários para representar os estados
@@ -743,7 +743,7 @@ state=fi(bin2dec(binstates),0,nbits,0); % Objeto numérico de ponto-fixo
 
 
 
-\begin{lstlisting}[language=Python, caption={[Python example]Python example -- \showfont}]
+\begin{lstlisting}[language=Python,caption={[Python example]{Python example -- \showfont}}]
 import numpy as np
 
 def incmatrix(genl1,genl2):
@@ -815,8 +815,8 @@ comandos, que devem ser digitados no \emph{Prompt de Comandos} do Windows ou no
 \emph{Terminal} do Mac ou do Linux -- \showfont:
 
 \begin{lstlisting}[language=bash,caption={[Você pode compilar os documentos \LaTeX{} usando os seguintes
-        comandos.]Você pode compilar os documentos \LaTeX{} usando os seguintes
-        comandos. -- \showfont},label={lst:compilarLatex}]
+        comandos.]{Você pode compilar os documentos \LaTeX{} usando os seguintes
+        comandos. -- \showfont}},label={lst:compilarLatex}]
    pdflatex ARQUIVO_PRINCIPAL.tex
    bibtex ARQUIVO_PRINCIPAL.aux
    makeindex ARQUIVO_PRINCIPAL.idx
@@ -848,7 +848,7 @@ seções, subseções e subsubseções.
 
 O código usado para produzir o texto desta seção é -- \showfont:
 
-\begin{lstlisting}[language=TeX, caption={[TeX example]TeX example} -- \showfont]
+\begin{lstlisting}[language=TeX,caption={[TeX example]{TeX example -- \showfont}}]
 Ao nomear a \autoref{tab-nivinv} e a \autoref{fig_circulo}, apresentamos um
 exemplo de remissão interna, que também pode ser feita quando indicamos o
 \autoref{cap_exemplos}, que tem o nome \emph{\nameref{cap_exemplos}}. O número
