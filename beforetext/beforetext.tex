@@ -115,9 +115,7 @@
     \ifforcedinclude\else\cleardoublepage\fi
     \addtotextpreliminarycontent{\lstlistlistingname}
     \pdfbookmark[0]{\lstlistlistingname}{lol}
-    {\renewcommand{\cftfigurename}{\listingname\space}
     \lstlistoflistings*
-    }
 \fi
 
 
@@ -170,11 +168,4 @@
     }
 
 \end{KeepFromToc}
-
-
-
-% How to fix destination with the same identifier (name{page.A}) has been already used, duplicate ignored?
-% https://tex.stackexchange.com/questions/386446/how-to-fix-destination-with-the-same-identifier-namepage-a-has-been-already
-\hypersetup{pageanchor=true}
-
 
