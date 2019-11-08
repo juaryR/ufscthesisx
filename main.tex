@@ -73,7 +73,7 @@ section=TITLE, % Título de seções em caixa alta
 \titulo{\lang{Work Title\protect\\Could be break into two lines}{Título do trabalho\protect\\Pode ser Quebrado em duas linhas}}
 
 % FIXME: Se houver subtítulo, descomente a linha abaixo
-% \subtitulo{\lang{Subtitle}{Subtítulo}}
+\subtitulo{\lang{Subtitle}{Subtítulo}}
 
 % FIXME: Siglas para grau de formação Dr./Dra., Me./Ma, Bel. Bela. (inglês: PhD., MSc., Bs.)
 \orientador[\lang{Supervisor}{Orientador(a)}]{\brazilword{Nome completo do Orientador(a)}, \lang{Phd.}{Dr.}}
@@ -155,8 +155,8 @@ section=TITLE, % Título de seções em caixa alta
     pdfsubject={Thesis' Abstract},
     pdfcreator={LaTeX with abnTeX2 for UFSC},
     pdftitle={\imprimirtitulo},
-    pdfauthor={\imprimirautor},%
-    pdfkeywords={\lang{\palavraschaveinglessemitem}{\palavraschaveportuguessemitem}},%
+    pdfauthor={\imprimirautor},
+    pdfkeywords={\lang{\palavraschaveinglessemitem}{\palavraschaveportuguessemitem}},
 }
 
 % Altere o arquivo 'settings.tex' para incluir customizações de aparência da sua tese
@@ -279,9 +279,9 @@ section=TITLE, % Título de seções em caixa alta
     % Referências bibliográficas
     \begingroup
         % https://tex.stackexchange.com/questions/163559/how-to-modify-line-spacing-per-entry-of-bibliography
-        % \linespread{1.18}\selectfont
+        \advisor{\setlength\bibitemsep{\baselineskip}}{\linespread{1.18}\selectfont}
 
-        % https://tex.stackexchange.com/questions/17128/using-bibtex-to-make-a-list-of-references-without
+        % https://tex.stackexchange.com/questions/17128/using-bibtex-to-make-a-list-of-references-without-having-citations-in-the-body
         % \nocite{*}
         \printbibliography[title=REFERÊNCIAS]
     \endgroup
