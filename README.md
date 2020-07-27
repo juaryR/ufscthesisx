@@ -43,8 +43,8 @@ sudo apt-get install xzdec
 ## Baixando diretamente modelo UFSC
 
 Caso queria,
-pode baixar diretamente o arquivo `zip` clique
-[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.1/ufscthesisx.zip) e descompacte o arquivo.
+pode baixar diretamente o arquivo `zip` em
+https://github.com/UFSC/ufscthesisx/releases e descompacte o arquivo.
 
 
 ## Utilizando `git` para baixar o modelo USFC
