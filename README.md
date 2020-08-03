@@ -72,8 +72,12 @@ e carrega todos os pacotes necessários e incluir os arquivos LaTeX que contém 
 Se você quiser,
 pode utilizar o [Overleaf](www.overleaf.com),
 um sistema de editoração *online* de textos em LaTeX.
+
 Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado em
-https://github.com/UFSC/ufscthesisx/releases
+https://github.com/UFSC/ufscthesisx/releases.
+
+Você também pode fazer o *upload* automaticamente para Overleaf com a última versão disponível clicando
+[aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/latest/download/ufscthesisx.zip).
 
 
 # Uso
