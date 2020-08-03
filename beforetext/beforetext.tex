@@ -47,6 +47,8 @@
 
         \clearpage
     }
+
+    % Fix the \textpreliminarycontents not showing up when @twoside is disabled
     \ifthenelse{\boolean{ufscThesisXisMemoirTwoSidesEnabled}}
     {\setboolean{@twoside}{true}}
     {\setboolean{@twoside}{false}}
