@@ -8,19 +8,17 @@ este projeto foi renomeado para `ufscthesisx`.
 
 Esse projeto não está vinculado a nenhum órgão da UFSC.
 
+Qualquer problema com a utilização ou com o modelo em si,
+basta criar um issue aqui no GitHub no nosso issue tracker: [issues](../../issues)
+
+
 ## Modelo em PDF
 
 Se você quer ter uma ideia de como é o modelo,
-a compilação deve resultar no seguinte [PDF](https://github.com/evandroforks/abntex2-ufsc-imagens/blob/master/pdf_exemplo_completo.pdf)
+a compilação deve resultar no seguinte [PDF](../../../ufscthesisx-images/blob/master/pdf_exemplo_completo.pdf).
 
 
 ## Instalar `LaTeX` e `abnTeX2`
-
-Para Linux,
-é necessário ter a instalação TeXLive 2018,
-e não TeXLive 2017.
-Veja a sua versão do TeXLive com o comando:
-1. `tex --version`
 
 Para poder utilizar a classe é necessário ter uma distribuição atual do LaTeX,
 incluindo o pacote abnTeX2.
@@ -49,8 +47,7 @@ sudo apt-get install xzdec
 ## Baixando diretamente modelo UFSC
 
 Caso queria,
-pode baixar diretamente o arquivo `zip` clique
-[aqui](https://github.com/UFSC/ufscthesisx/releases/download/v1.1/ufscthesisx.zip) e descompacte o arquivo.
+pode baixar diretamente o arquivo `zip` em [releases](../../releases) e descompacte o arquivo.
 
 
 ## Utilizando `git` para baixar o modelo USFC
@@ -76,10 +73,13 @@ e carrega todos os pacotes necessários e incluir os arquivos LaTeX que contém 
 ## Utilizando Overleaf para digitar sua tese com modelo UFSC
 
 Se você quiser,
-pode utilizar o [Overleaf](www.overleaf.com),
+pode utilizar o [Overleaf](https://www.overleaf.com),
 um sistema de editoração *online* de textos em LaTeX.
-Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado acima ou então faça o *upload* automaticamente com a
-última versa clicando [aqui](http://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/download/v1.1/ufscthesisx.zip)
+
+Se você já tiver uma conta no Overleaf pode fazer o *upload* do arquivo `.zip` baixado em [releases](../../releases).
+
+Você também pode fazer o *upload* automaticamente para Overleaf com a última versão disponível clicando
+[aqui](https://overleaf.com/docs?snip_uri=https://github.com/UFSC/ufscthesisx/releases/latest/download/ufscthesisx.zip).
 
 
 # Uso
@@ -103,8 +103,32 @@ ou executar o comando `make` caso você esteja no Linux.
 
 ## Compilação
 
+O jeito mais legal de compilar é executando um dos seguintes comandos:
+1. **`make clean`**
+1. **`make clean halt=1 debug=1`**
+1. **`make latex biber latex1`**
+1. **`make latex biber latex1 halt=1 debug=1`**
+1. **`make latex biber latex1 biber1 latex2`**
+1. **`make latex biber latex1 biber1 latex2 halt=1 debug=1`**
+1. **`...`**
+
 Se você quiser saber quais são todos os comandos de compilação disponíveis,
-basta chamar utilizar o comando `make help`
+basta chamar utilizar o comando `make help`. Exemplo:
+```
+$ make help
+
+ Usage:
+   make <target> [debug=1]
+
+ Use debug=1 to run make in debug mode. Use this if something does not work!
+ Examples:
+   make help
+   make debug=1
+   make latex debug=1
+   make thesis debug=1
+
+...
+```
 
 Caso você tenha problemas,
 error ou algo não funcione,
@@ -118,7 +142,7 @@ Por exemplo,
 Por conveniência,
 você também pode chamar `make latex debug=a` qualquer outra coisa desde que não seja vazio.
 Por exemplo,
-`make latex debug=` Você também pode diretamente editar o arquivo `setup/makefile.mk` e
+`make latex debug=1` Você também pode diretamente editar o arquivo `setup/makefile.mk` e
 descomentar a linha `# ENABLE_DEBUG_MODE := true` para ativar o modo debug permanentemente.
 
 
@@ -143,14 +167,13 @@ a Biblioteca Central disponibiliza um site específico para as normas e foi com 
 
 # Mudanças
 
-Para ver as mudanças, acesse o histórico do `git` no endereço:
-1. https://github.com/ufsc/ufscthesisx/commits/master
+Para ver as mudanças, acesse o histórico do `git` no endereço [commits/master](../../commits/master).
 
 Ou clone este repositório e execute seguinte comando do cliente git:
 ```bash
+# https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 git log
 ```
-1. https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
 
 
 # Licença
@@ -160,6 +183,7 @@ Copyright (c) 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/
 Copyright (c) 2014-2015 Mateus Dubiela Oliveira
 Copyright (c) 2015-2016 Adriano Ruseler
 Copyright (c) 2017-2018 Evandro Coan, Luiz Rafael dos Santos
+Copyright (c) 2019-2019 Alisson Lopes Furlani
 
 É concedida permissão, gratuitamente, a qualquer pessoa que obtenha uma cópia deste modelo e
 software e arquivos de documentação associados (o "Software"), para ter estes arquivos com os

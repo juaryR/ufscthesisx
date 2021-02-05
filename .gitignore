@@ -2,12 +2,14 @@
 /.settings
 /.project
 /.texlipse
-/.gitignore
 /example.pdf
 /tmp
+/cache
+/latexcache
+/.time_flag.txt
 
 *.sublime-workspace
-*.pdf
+main.pdf
 
 # Latex files related
 *.brf
